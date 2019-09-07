@@ -1,35 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE project [
-        <!ELEMENT project (modelVersion|groupId|artifactId|version|dependencies)*>
-        <!ATTLIST project
-                xmlns CDATA #REQUIRED
-                xmlns:xsi CDATA #REQUIRED
-                xsi:schemaLocation CDATA #REQUIRED>
-        <!ELEMENT modelVersion (#PCDATA)>
-        <!ELEMENT groupId (#PCDATA)>
-        <!ELEMENT artifactId (#PCDATA)>
-        <!ELEMENT version (#PCDATA)>
-        <!ELEMENT dependencies (dependency)*>
-        <!ELEMENT dependency (groupId|artifactId|version)*>
-        ]>
+<!ELEMENT project (modelVersion|groupId|artifactId|version|dependencies)*>
+<!ATTLIST project
+xmlns CDATA #REQUIRED
+xmlns:xsi CDATA #REQUIRED
+xsi:schemaLocation CDATA #REQUIRED>
+<!ELEMENT modelVersion (#PCDATA)>
+<!ELEMENT groupId (#PCDATA)>
+<!ELEMENT artifactId (#PCDATA)>
+<!ELEMENT version (#PCDATA)>
+<!ELEMENT dependencies (dependency)*>
+<!ELEMENT dependency (groupId|artifactId|version)*>
+]>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
+    
     <properties>
         <timestamp>${maven.build.timestamp}</timestamp>
         <maven.build.timestamp.format>MM-dd-yyyy</maven.build.timestamp.format>
         <version>1.0.0</version>
     </properties>
-
-    <groupId>com.teststack</groupId>
-    <artifactId>automationframework</artifactId>
+    
+    <groupId>com.vitamineframework</groupId>
+    <artifactId>CommunityEdition</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
-
+    
+    <name>VitaminE-Framework Community Version</name>
+    <url>www.vitamineframework.com/</url>
+    <description>An open-source test automation library for Java and Selenium.</description>
+    
+    <licenses>
+        <license>
+            <name>The BSD 3-Clause License</name>
+            <url>http://opensource.org/licenses/BSD-3-Clause</url>
+        </license>
+    </licenses>
+    
+    <scm>
+        <connection>scm:git:https://github.com/teststack-git/VitaminE-Framework</connection>
+        <developerConnection>scm:git:https://github.com/teststack-git/VitaminE-Framework</developerConnection>
+        <url>https://github.com/teststack-git/VitaminE-Framework</url>
+    </scm>
+    
+    <developers>
+        <developer>
+            <name>Mark Kerner</name>
+            <url>https://github.com/teststack-git/VitaminE-Framework</url>
+            <id>teststack-git</id>
+            <roles>
+                <role>Owner</role>
+            </roles>
+        </developer>
+    </developers>
+    
     <dependencies>
-       <dependency>
+        <dependency>
             <groupId>com.aventstack</groupId>
             <artifactId>extentreports</artifactId>
             <version>3.1.5</version>
@@ -176,7 +204,7 @@
             <version>0.0.8</version>
         </dependency>
     </dependencies>
-
+    
     <build>
         <plugins>
             <plugin>
@@ -241,9 +269,20 @@
                 </executions>
             </plugin>
         </plugins>
-
+        
         <finalName>${project.groupId}.${project.artifactId}-${version}</finalName>
     </build>
-
- 
+    
+    
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+        </repository>
+    </distributionManagement>
+    
 </project>
